@@ -29,16 +29,17 @@ const Footer = () => {
   </nav>
   <nav>
     <h6 className="footer-title">Social links</h6>
-    <a className="link link-hover">About us</a>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
+    <a className="link link-hover">Twitter</a>
+    <a className="link link-hover">Gamil</a>
+    <a className="link link-hover">Facebook</a>
+    <a className="link link-hover">What's Up</a>
   </nav>
   <nav>
     <h6 className="footer-title">About section</h6>
     <a className="link link-hover">Terms of use</a>
     <a className="link link-hover">Privacy policy</a>
     <a className="link link-hover">Cookie policy</a>
+    <a className="link link-hover">all right to rahul</a>
   </nav>
 </footer>
         </div>

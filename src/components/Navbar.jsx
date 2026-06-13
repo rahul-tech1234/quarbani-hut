@@ -2,6 +2,7 @@
 import {Bars} from '@gravity-ui/icons';
 import Nablink from './Nablink';
 import { useState } from 'react';
+import Link from 'next/link';
 const Navbar = () => {
        const [active,isAtive]=useState(false);
      const han=()=>{
@@ -20,7 +21,7 @@ const Navbar = () => {
                 <li><Nablink href={'/'} >Home</Nablink></li>
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
             </ul>       
-            <div className="end"><button className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</button></div>       
+            <div className="end"><Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link></div>       
         </div>
     );
 };
