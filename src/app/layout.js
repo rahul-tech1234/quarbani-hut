@@ -1,5 +1,6 @@
 import {  Outfit } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 const Outfitfont = Outfit({
    subsets: ["latin"],
 });
@@ -17,9 +18,8 @@ export default function RootLayout({ children }) {
             className={`${Outfitfont.className} h-full antialiased`}
         >
             <body className="min-h-full flex flex-col w-10/12 mx-auto">
-                
                 {children}
-                
+                <ToastContainer />
             </body>
         </html>
     );

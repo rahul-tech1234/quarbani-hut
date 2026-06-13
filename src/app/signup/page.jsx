@@ -1,16 +1,58 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {Check} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
-    const handleSignUp=(e)=>{
-        e.preventDehault();
+    const handleSignUp=async(e)=>{
+        e.preventDefault();
+        const name=e.target.name.value;
+        const image=e.target.image.value;
+        const email=e.target.email.value;
+        const password=e.target.password.value;
+        console.log(name,email,password);
+        const { data, error } = await authClient.signUp.email({
+        name: name, // required
+        email: email, // required
+        password: password, // required
+        image: image,
+    });
+    if (data) {
+         toast.success("Sign Up successfull");
     }
+    if (error) {
+        toast.error(error.message);
+    }
+    }
+
     return (
-        <div>
-            <Form className="flex w-96 flex-col gap-4" onSubmit={handleSignUp}>
+        <div className="flex flex-col items-center justify-center h-[100vh]"> 
+          <div className="rounded-xl  p-9 shadow-xl bg-gray-200">
+            <h2 className="text-center text-4xl my-3 font-semibold text-gray-600">Sign Up</h2>
+              <Form className="flex w-96 flex-col gap-4" onSubmit={handleSignUp}>
       <TextField
+        isRequired
+        name="name"
+        type="text"
+      >
+        <Label>Name</Label>
+        <Input placeholder="john" />
+        <FieldError />
+      </TextField>
+      {/* Image */}
+       <TextField
+        isRequired
+        name="image"
+        type="text"
+      >
+        <Label>Image URL</Label>
+        <Input placeholder="https://example.com/img.png" />
+        <FieldError />
+      </TextField>
+      {/* email */}
+       <TextField
         isRequired
         name="email"
         type="email"
@@ -26,6 +68,7 @@ const SignUpPage = () => {
         <Input placeholder="john@example.com" />
         <FieldError />
       </TextField>
+      {/* password */}
 
       <TextField
         isRequired
@@ -62,6 +105,7 @@ const SignUpPage = () => {
         </Button>
       </div>
     </Form>
+          </div>
         </div>
     );
 };
