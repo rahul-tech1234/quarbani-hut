@@ -5,7 +5,7 @@ import { Separator } from '@heroui/react';
 import Link from 'next/link';
 const CardPage = ({singleData}) => {
     
-    console.log(singleData.image);
+    console.log(singleData);
     return (
        <div>
             <Card className="border rounded-xl">
