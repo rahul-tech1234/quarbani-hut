@@ -1,17 +1,15 @@
+import { data } from "@/apicall";
 import Card from "@/components/homepage/Card";
-const data=async()=>{
-    const res=await fetch('https://quarbani-hut-sigma.vercel.app/data.json');
-    const data=await res.json();
-    return data;
-}
 const FeaturedPage  = async() => {
     const getData=await data();
     //console.log(getData);
+    const slcie=getData.slice(0,4);
+    //console.log(slcie);
     return (
             
-        <div className="grid  md:grid-cols-3 gap-5 my-5">
+        <div className="grid md:grid-cols-4 gap-5 my-5">
             {
-                getData.map(singleData=><Card key={singleData.id} singleData={singleData}></Card>)
+                slcie.map(singleData=><Card key={singleData.id} singleData={singleData}></Card>)
             }
         </div>
     );
