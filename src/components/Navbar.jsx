@@ -29,6 +29,7 @@ const Navbar = () => {
             <ul className="middle flex justify-between items-center gap-5">
                 <li><Nablink href={'/'} >Home</Nablink></li>
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
+                <li><Nablink href={'/profile'}>My Profile</Nablink></li>
             </ul>       
             <div className="end">
                 {
