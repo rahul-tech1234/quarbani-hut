@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
             <Link 
             href={href} 
             onClick={()=>setIsActive(!isActive)} 
-            className={`${isActive && 'animate__animated animate__bounce'}`}>{children}</Link>
+            className={`${isActive && 'border border-purple-700'}`}>{children}</Link>
         </div>
     );
 };
