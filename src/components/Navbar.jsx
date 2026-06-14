@@ -21,7 +21,12 @@ const Navbar = () => {
                 <li><Nablink href={'/'} >Home</Nablink></li>
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
             </ul>       
-            <div className="end"><Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link></div>       
+            <div className="end">
+                <Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link>
+                
+                <Link href={'/login'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign In</Link>
+                
+                </div>       
         </div>
     );
 };

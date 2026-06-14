@@ -21,6 +21,7 @@ const SignUpPage = () => {
     });
     if (data) {
          toast.success("Sign Up successfull");
+         return
     }
     if (error) {
         toast.error(error.message);
