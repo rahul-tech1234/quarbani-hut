@@ -3,8 +3,17 @@ import {Bars} from '@gravity-ui/icons';
 import Nablink from './Nablink';
 import { useState } from 'react';
 import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
+import {Avatar, Button} from "@heroui/react";
 const Navbar = () => {
-       const [active,isAtive]=useState(false);
+    const handleSignOut=async()=>{
+        await authClient.signOut();
+    }
+    const userData=authClient.useSession();
+    const user=userData.data?.user;
+    console.log(user)
+    //console.log(userData);
+    const [active,isAtive]=useState(false);
      const han=()=>{
         isAtive(true);
         console.log(active);
@@ -22,9 +31,30 @@ const Navbar = () => {
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
             </ul>       
             <div className="end">
-                <Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link>
+                {
+                    !user && 
+                        <ul className='flex justify-between items-center gap-2'>
+                            <li>
+                                <Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link>
+                            </li>
+                            <li>
+                                <Link href={'/login'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign In</Link>
+                            </li>
+                        
                 
-                <Link href={'/login'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign In</Link>
+                
+                        </ul>
+                }
+                {
+                    user &&   <div className='flex justify-between items-center gap-1'>
+                        <Avatar>
+        <Avatar.Image alt={user?.name} src={user?.image} />
+        <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+      </Avatar>
+      <Button variant='danger' onClick={handleSignOut}>Sign Out</Button>
+                    </div>
+      
+                }
                 
                 </div>       
         </div>

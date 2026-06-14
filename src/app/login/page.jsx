@@ -6,6 +6,7 @@ import {Button,  FieldError, InputGroup, Form, Input, Label, TextField} from "@h
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { FaGoogle } from "react-icons/fa";
 const LogInPage = () => {
     const [isVisible, setIsVisible] = useState(false);
     const handleSignIn=async(e)=>{
@@ -22,13 +23,18 @@ const LogInPage = () => {
 console.log(data,error);
 if (data) {
     toast.success('Log in successfull');
-    return
+    return 
 }
 if (error) {
     //console.log(error)
     toast.error(error.message);
 }
     }
+    const handleGoogle = async () => {
+        const data = await authClient.signIn.social({
+        provider: "google",
+  });
+};
     return (
         <div className="flex flex-col items-center justify-center h-[100vh]"> 
           <div className="rounded-xl  p-9 shadow-xl bg-gray-200">
@@ -83,7 +89,15 @@ if (error) {
         </Button>
       </div>
     </Form>
-    <Link href={'/signup'} className="block text-center text-blue-500 font-light">Don&apos;t have an account </Link>
+    <div className='text-center space-y-3'>
+      Or
+      <Link href={'/signup'} className="block text-center text-blue-500 font-light">Don&apos;t have an account </Link>
+    <Button 
+    className="w-full text-xl"              
+    
+    onClick={handleGoogle}><FaGoogle></FaGoogle> Sign In with Google</Button>
+    </div>
+    
           </div>
         </div>
     );
