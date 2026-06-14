@@ -15,10 +15,10 @@ const LogInPage = () => {
         const password=e.target.password.value;
         console.log(email,password);
         const { data, error } = await authClient.signIn.email({
-    email: email, // required
-    password: password, // required
-    rememberMe: true,
-    callbackURL: "/",
+            email: email, // required
+            password: password, // required
+            rememberMe: true,
+            callbackURL: "/",
 });
 console.log(data,error);
 if (data) {
@@ -31,7 +31,7 @@ if (error) {
 }
     }
     const handleGoogle = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
         provider: "google",
   });
 };

@@ -1,7 +1,7 @@
 "use client"
 import {Bars} from '@gravity-ui/icons';
 import Nablink from './Nablink';
-import { useState } from 'react';
+
 import Link from 'next/link';
 import { authClient } from '@/lib/auth-client';
 import {Avatar, Button} from "@heroui/react";
@@ -11,22 +11,17 @@ const Navbar = () => {
     }
     const userData=authClient.useSession();
     const user=userData.data?.user;
-    console.log(user)
-    //console.log(userData);
-    const [active,isAtive]=useState(false);
-     const han=()=>{
-        isAtive(true);
-        console.log(active);
-     }
+   // console.log(user)
     return (
         <div className="flex justify-between items-center gap-5 mt-2 py-5 bg-gray-100 rounded px-2">
             <div className="start flex items-center gap-5 font-bold text-4xl ">
                 <div className="md:hidden">
                 <Bars className="size-5"></Bars>
             </div>
-                <h1 className="bg-linear-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent">QurbaniHat</h1> 
+                <h1 className="bg-linear-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent ">QurbaniHat</h1>
+                
             </div>       
-            <ul className="middle flex justify-between items-center gap-5">
+            <ul className=" middle flex justify-between items-center gap-5">
                 <li><Nablink href={'/'} >Home</Nablink></li>
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
                 <li><Nablink href={'/profile'}>My Profile</Nablink></li>

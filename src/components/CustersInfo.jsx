@@ -1,5 +1,4 @@
 "use client";
-
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
@@ -12,13 +11,16 @@ const CustersInfo = () => {
         const image=e.target.image.value;
         const email=e.target.email.value;
         const phone=e.target.phone.value;
+        const password=e.target.password.value;
         //console.log(name,email,image,phone);
-        const { data, error } = await authClient.signUp.email({
+        const { data, error } = await authClient.signIn.email({
                 name: name, // required
                 email: email, // required
                 phone: phone, // required
                 image: image,
+                password:password,
             });
+            console.log(data,error)
             if (data) {
                 toast.success('Welcome! You have receive a mail in a few moment')
             }
@@ -46,8 +48,8 @@ const CustersInfo = () => {
                 name="image"
                 type="text"
               >
-                <Label>Image URL</Label>
-                <Input placeholder="https://example.com/img.png" />
+                <Label>Address</Label>
+                <Input placeholder="Sylhet" />
                 <FieldError />
               </TextField>
               {/* email */}
@@ -87,6 +89,34 @@ const CustersInfo = () => {
                 <Description>Must be 11 characters</Description>
                 <FieldError />
               </TextField>
+              {/* password */}
+
+ <TextField
+        isRequired
+        minLength={8}
+        name="password"
+        type="password"
+        validate={(value) => {
+          if (value.length < 8) {
+            return "Password must be at least 8 characters";
+          }
+          if (!/[A-Z]/.test(value)) {
+            return "Password must contain at least one uppercase letter";
+          }
+          if (!/[0-9]/.test(value)) {
+            return "Password must contain at least one number";
+          }
+
+          return null;
+        }}
+      >
+        <Label>Password</Label>
+        <Input placeholder="Enter your password" />
+        <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
+        <FieldError />
+      </TextField>
+
+
         
               <div className="flex gap-2">
                 <Button type="submit">
@@ -97,6 +127,7 @@ const CustersInfo = () => {
                   Reset
                 </Button>
               </div>
+            
             </Form>
                   </div>
                 </div>

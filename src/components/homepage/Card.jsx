@@ -33,7 +33,7 @@ const CardPage = ({singleData}) => {
                     <p>{singleData.age}</p>
                 </div>
                 </div>
-                <Link href={`/all-animals/${singleData.id}`}><Button className={'w-full'} variant='outline'>View</Button></Link>
+                <Link href={`/all-animals/${singleData.id}`}><Button className={'w-full'} variant='outline'>View Details</Button></Link>
             </Card>
         </div>
     );
