@@ -3,10 +3,12 @@
 import { authClient } from "@/lib/auth-client";
 import {Check} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const SignUpPage = () => {
-    const handleSignUp=async(e)=>{
+  const router=useRouter();  
+  const handleSignUp=async(e)=>{
         e.preventDefault();
         const name=e.target.name.value;
         const image=e.target.image.value;
@@ -21,6 +23,7 @@ const SignUpPage = () => {
     });
     if (data) {
          toast.success("Sign Up successfull");
+         router.push('/');
          return
     }
     if (error) {
