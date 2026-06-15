@@ -1,30 +1,62 @@
+'use client';
 import { data } from "@/apicall";
 import Card from "@/components/homepage/Card";
+import { useEffect, useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-const AllAnimalsPage = async() => {
-    const getAllData=await data()
+const AllAnimalsPage = () => {
+
+const [data, setData] = useState([]);
+const [sortOption, setSortOption] = useState("");
+
+useEffect(() => {
+  const getAllData = async () => {
+    const res = await fetch("/data.json");
+    const result = await res.json();
+    setData(result);
+  };
+  
+
+  getAllData();
+}, []);
+
+
+const handleSort = (option) => {
+  setSortOption(option);
+
+  const sorted = [...data];
+
+  if (option === "price-asc") {
+    sorted.sort((a, b) => a.price - b.price);
+  }
+
+  if (option === "price-desc") {
+    sorted.sort((a, b) => b.price - a.price);
+  }
+
+  setData(sorted);
+};
+
     //console.log(getAllData);
-    const low=[...getAllData]?.sort((a,b)=>a.price-b.price);
-    console.log(low);
     return (
         <>
             <h2 className="text-center font-bold text-3xl my-3">All Animals</h2>
             <div className="flex flex-col justify-center items-center">
                 
 
-<div className="dropdown dropdown-start">
-  <div tabIndex={0} role="button" className="btn m-1">All ⬇️</div>
-  <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li ><a>High</a></li>
-    <li><a>Low</a></li>
-  </ul>
-</div>
 
-                
+<select onChange={(e) => handleSort(e.target.value)}>
+  <option value="">Default</option>
+  <option value="price-asc">Low to High</option>
+  <option value="price-desc">High to Low</option>
+</select>
+
+
+
+
                 <div className="grid  md:grid-cols-4 gap-5 my-5">
                 {
-                    getAllData.map(singleData=><Card key={singleData.id} singleData={singleData}></Card>)
+                    data.map(singleData=><Card key={singleData.id} singleData={singleData}></Card>)
                 }
             </div>
             </div>

@@ -1,10 +1,8 @@
-import BgBanner from '@/assets/Banner.png';
-import Image from 'next/image';
 import Link from 'next/link';
 const Banner = () => {
     //console.log(BgBanner.src);  
     return (
-        <div className={`h-[60vh] w-full flex items-center rounded-lg shadow-2xl `}  >
+        <div className={`h-[60vh] w-full bg-cover bg-no-repeat bg-center flex items-center rounded-lg shadow-2xl`} style={{background:"url('/Banner.png')"}} >
             {/* <div>
                 <Image src={BgBanner} alt='name' width={500} height={300}  className='h-auto'></Image>
             </div> */}
