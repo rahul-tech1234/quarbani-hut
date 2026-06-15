@@ -8,11 +8,11 @@ const SinglePageDetails = async ({params}) => {
     const AllData= await data();
     const {id}=await params
     //console.log(id ,'params')
-    const singleData=AllData.find(data=>data.id==id);
+    const singleData=await AllData?.find(data=>data.id==id);
     //console.log(singleData.name);
     return (
       <div className="card bg-base-100  shadow-sm my-3">
-         <div className="flex sm:flex-col md:flex-row justify-between items-center gap-5">
+         <div className="grid md:grid-cols-2 justify-between items-center gap-5">
           <div className="card-body relative bg-gray-100 rounded shadow py-5">
             
           <figure className="w-100">

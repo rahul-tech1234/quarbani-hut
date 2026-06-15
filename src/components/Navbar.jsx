@@ -1,40 +1,49 @@
 "use client"
 import {Bars} from '@gravity-ui/icons';
 import Nablink from './Nablink';
-
 import Link from 'next/link';
 import { authClient } from '@/lib/auth-client';
 import {Avatar, Button} from "@heroui/react";
+import { useState } from 'react';
 const Navbar = () => {
+    const [isClicked,setIsCliked]=useState(false);
     const handleSignOut=async()=>{
         await authClient.signOut();
     }
     const userData=authClient.useSession();
     const user=userData.data?.user;
-   // console.log(user)
-    return (
-        <div className="flex justify-between items-center gap-5 mt-2 py-5 bg-gray-100 rounded px-2">
-            <div className="start flex items-center gap-5 font-bold text-4xl ">
-                <div className="md:hidden">
-                <Bars className="size-5"></Bars>
-            </div>
-                <h1 className="bg-linear-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent ">QurbaniHat</h1>
-                
-            </div>       
-            <ul className=" middle flex justify-between items-center gap-5">
-                <li><Nablink href={'/'} >Home</Nablink></li>
+    const link=<>
+    <li><Nablink href={'/'} >Home</Nablink></li>
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
                 <li><Nablink href={'/profile'}>My Profile</Nablink></li>
+    </>
+   // console.log(user)
+    return (
+        <div className="flex justify-between items-center gap-5 mt-2 py-5 rounded px-2">
+            <div className="start flex items-center gap-5 font-bold text-4xl ">
+                <div className="relative">
+                <Bars className="size-5 md:hidden" onClick={()=>setIsCliked(!isClicked)}></Bars>
+                <ul className={`text-[16px] font-light line space-y-2 ${isClicked ? '': 'hidden'}`} >
+                   <li><Nablink href={'/'} >Home</Nablink></li>
+                <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
+                <li><Nablink href={'/profile'}>My Profile</Nablink></li>
+                </ul> 
+            </div>
+                <h1 className="bg-linear-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent animate__animated animate__bounce">QurbaniHat</h1>
+                
+            </div>       
+            <ul className=" middle hidden md:flex justify-between items-center gap-5">
+                {link}
             </ul>       
             <div className="end">
                 {
                     !user && 
                         <ul className='flex justify-between items-center gap-2'>
                             <li>
-                                <Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign Up</Link>
+                                <Link href={'/signup'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" >Sign Up</Link>
                             </li>
                             <li>
-                                <Link href={'/login'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" onClick={() => console.log("clicked")}>Sign In</Link>
+                                <Link href={'/login'} className="btn bg-linear-to-r from-purple-400 to-yellow-500  text-white" >Sign In</Link>
                             </li>
                         
                 
