@@ -17,7 +17,6 @@ const Navbar = () => {
                 <li><Nablink href={'/all-animals'}>All Animals</Nablink></li>
                 <li><Nablink href={'/profile'}>My Profile</Nablink></li>
     </>
-   // console.log(user)
     return (
         <div className="flex justify-between items-center gap-5 mt-2 py-5 rounded px-2">
             <div className="start flex items-center gap-5 font-bold text-4xl ">
