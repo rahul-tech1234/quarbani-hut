@@ -2,7 +2,10 @@ import { Card } from "@heroui/react";
 
 const TipsPage = () => {
     return (
+       <>
+         <h2 className="animate__animated animate__bounce bg-linear-to-r from-purple-400 to-yellow-400 bg-clip-text text-transparent text-center text-4xl font-extrabold mt-20 mb-10">কুরবানির কিছু গুরুত্বপূর্ণ টিপস</h2>
         <div className="grid md:grid-cols-3  my-5 gap-5">
+            
             <Card className="transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
                 <h2 className=" text-2xl font-bold ">🐄 Before Buying</h2>
                 <ul className="space-y-2 text-gray-700">
@@ -59,6 +62,7 @@ const TipsPage = () => {
                 </ul>
             </Card>
         </div>
+       </>
     );
 };
 
