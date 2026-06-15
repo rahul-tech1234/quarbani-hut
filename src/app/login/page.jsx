@@ -39,7 +39,7 @@ if (error) {
         <div className="flex flex-col items-center justify-center h-[100vh]"> 
           <div className="rounded-xl  p-9 shadow-xl bg-gray-200">
             <h2 className="text-center text-4xl my-3 font-semibold text-gray-600" >Sign In</h2>
-              <Form className="flex w-96 flex-col gap-4" onSubmit={handleSignIn}>
+              <Form className="flex  flex-col gap-4" onSubmit={handleSignIn}>
       {/* email */}
        <TextField
         isRequired

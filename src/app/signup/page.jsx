@@ -35,7 +35,7 @@ const SignUpPage = () => {
         <div className="flex flex-col items-center justify-center h-[100vh]"> 
           <div className="rounded-xl  p-9 shadow-xl bg-gray-200">
             <h2 className="text-center text-4xl my-3 font-semibold text-gray-600">Sign Up</h2>
-              <Form className="flex w-96 flex-col gap-4" onSubmit={handleSignUp}>
+              <Form className="flex  flex-col gap-4" onSubmit={handleSignUp}>
       <TextField
         isRequired
         name="name"
